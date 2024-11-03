@@ -1,3 +1,6 @@
+// comsc-210 | ali saeed | lab26
+// ide used: vs code
+
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -138,7 +141,6 @@ int main() {
                     break;
                 }
                 case 1: {  // delete by value from list
-                    cout << "List" << data_list.size() << endl;
                     data_list.remove(target_l);
                     auto end = chrono::high_resolution_clock::now();
                     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
@@ -156,9 +158,10 @@ int main() {
         }
     }
     
-
+    //finally done
+    //comapred with solution code and similar readings like if i were to average all the outputs from that file
     string labels[] = {"Read", "Sort", "Insert", "Delete"};
-    cout << "Number of simulations: " << TRIALS;
+    cout << "Number of simulations: " << TRIALS << endl;
     cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
          << setw(W1) << "Set" << endl;
     for (int i = 0; i < 4; i++) {
