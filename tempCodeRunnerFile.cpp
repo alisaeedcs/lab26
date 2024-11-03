@@ -17,11 +17,11 @@ const int TRIALS = 15;
 int main() {
     int results[TRIALS][ROWS][COLS];
     string cd;
-    vector<string> data_vector;
-    list<string> data_list;
-    set<string> data_set;
 
     for (int j = 0; j < TRIALS; j++) {
+        vector<string> data_vector;
+        list<string> data_list;
+        set<string> data_set;
         // testing for READ operations
         for (int i = 0; i < STRUCTURES; i++) {
             ifstream fin("codes.txt");
@@ -125,7 +125,7 @@ int main() {
 
             // select a target value in the set
             auto it2 = data_set.begin();
-            advance(it2, ind);
+            //advance(it2, ind);
             string target_s = *it2;
             
             auto start = chrono::high_resolution_clock::now();
@@ -138,6 +138,7 @@ int main() {
                     break;
                 }
                 case 1: {  // delete by value from list
+                    cout << "List" << data_list.size() << endl;
                     data_list.remove(target_l);
                     auto end = chrono::high_resolution_clock::now();
                     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
@@ -164,15 +165,17 @@ int main() {
         for (int j = 0; j < COLS; j++) {
             //get total for each operation
             int total = 0;
+            int count = 0;
             bool not_negative = false;
             for (int k = 0; k < TRIALS; k++) {
                 if (results[k][i][j] != -1) {
                     total += results[k][i][j];
+                    count++;
                     not_negative = true;
                 }
             }
             if (not_negative) {
-                cout << setw(W1) << int(total / TRIALS);
+                cout << setw(W1) << total / count;
             }
             else {
                 cout << setw(W1) << -1;
