@@ -120,12 +120,13 @@ int main() {
 
             // select a target value in the list
             auto it1 = data_list.begin();
+            cout << "List" << data_list.size() << endl;
             advance(it1, ind);
             string target_l = *it1;
 
             // select a target value in the set
             auto it2 = data_set.begin();
-            advance(it2, ind);
+            //advance(it2, ind);
             string target_s = *it2;
             
             auto start = chrono::high_resolution_clock::now();
@@ -164,15 +165,17 @@ int main() {
         for (int j = 0; j < COLS; j++) {
             //get total for each operation
             int total = 0;
+            int count = 0;
             bool not_negative = false;
             for (int k = 0; k < TRIALS; k++) {
                 if (results[k][i][j] != -1) {
                     total += results[k][i][j];
+                    count++;
                     not_negative = true;
                 }
             }
             if (not_negative) {
-                cout << setw(W1) << int(total / TRIALS);
+                cout << setw(W1) << total / count;
             }
             else {
                 cout << setw(W1) << -1;
